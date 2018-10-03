@@ -1,0 +1,6 @@
+*.db
+*.*.swp
+__pycache__/*
+env/*
+dov/*
+

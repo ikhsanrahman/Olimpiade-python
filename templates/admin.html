@@ -1,0 +1,90 @@
+{%extends "baseadmin.html"%}
+
+{%block body%}
+  
+  {%if users%}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Confirmed</th>
+            <th>Registered Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for user in users%}
+            <tr>
+              <td>{{user.id}}</td>
+              <td>{{user.nama}}</td>
+              <td>{{user.email}}</td>
+              {%if user.is_confirmed() == True%}
+                <td>Confirmed</td>
+              {%else%}
+              <td>
+                  <form method="post" action="/confirm/{{user.id}}" >
+                    <input type="submit" value="confirm">
+                  </form>
+                </td>
+              {%endif%}
+              <td>{{user.registered_date}}</td>
+          </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+    </div>
+
+    {%elif confirmed_users%}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Registered Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for user in confirmed_users%}
+            
+            {%if user.role == "user"%}
+            <tr>
+              <td>{{user.id}}</td>
+              <td>{{user.nama}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.registered_date}}</td>
+            </tr>
+            {%endif%}
+          {%endfor%}
+        </tbody>
+      </table>
+
+
+    {%elif peserta%}
+
+    <div class="card">
+    <div class="card-header">
+    Jumlah Pendaftar
+    </div>
+    
+    <div class="card-body">
+      <h5 class="card-title">{{pendaftar}}</h5>
+    </div>
+    </div>
+
+    <div class="card">
+    <div class="card-header">
+    Jumlah Peserta
+    </div>
+    
+    <div class="card-body">
+      <h5 class="card-title">{{peserta}}</h5>
+    </div>
+    </div>
+
+
+    {%endif%}
+
+
+{%endblock%}

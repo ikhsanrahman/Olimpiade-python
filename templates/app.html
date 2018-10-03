@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+
+{%block body%}
+
+<div class="container">
+		{%if current_user.confirmed%}
+			<div class="card mb-1">
+  			<div class="card-header">
+    			Informasi Peserta
+  			</div>
+		  	<div class="card-body">
+		    	<h5 class="card-title">PRF Token</h5>
+		    	<p class="card-text">{{current_user.token}}</p>
+		  		</div>
+			</div>
+
+			<div class="card">
+  			<div class="card-header">
+    			Informasi Lomba
+  			</div>
+		  	<div class="card-body">
+		    	<h5 class="card-title">Waktu Lomba</h5>
+		    	<p class="card-text">4 hari 8 jam 9 menit 20 detik</p>
+		    	<a href="#" class="btn btn-primary">Mulai Lomba</a>
+		  		</div>
+			</div>
+		{%else%}
+			<p>akun anda belum dikonfirmasi oleh panitia! </p>
+			<p>harap aktivasi akun anda segera! </p>
+			<div class="card">
+  			<div class="card-header">
+    			Informasi Pendaftar
+  			</div>
+		  	<div class="card-body">
+		    	<h5 class="card-title">Akun</h5>
+		    	<p class="card-text">Akun anda belum dikonfirmasi oleh panitia.</p>
+		  		</div>
+			</div>
+		{%endif%}
+
+</div>
+
+{%endblock%}

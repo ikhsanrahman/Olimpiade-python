@@ -1,0 +1,132 @@
+{%extends "base.html"%}
+
+{%block body%}
+
+  <div class="col-md-8 offset-md-2">
+                    <span class="anchor" id="formUserEdit"></span>
+                    <hr class="my-5">
+
+                    <!-- form user info -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Registrasi Peserta</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form" autocomplete="off" method="POST" action="/register">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Nama Lengkap</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value="" name="nama">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">E-mail</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="email" placeholder="email valid yang bisa dihubungi" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="password" name="password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="password" name="password_confirm">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Alamat Sekolah</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value="" name="alamat">
+                                    </div>
+                                </div>
+                                  <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Kab/Kota</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value="" name="kabupaten_kota">
+                                    </div>
+                                </div>
+                                  <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Provinsi</label>
+                                   <div class="col-lg-9">
+                                        <select class="form-control" size="0" name="provinsi">
+                                           	<option value="Aceh">Aceh</option>
+											<option value="Bali">Bali</option>
+											<option value="Banten">Banten</option>
+											<option value="Bengkulu">Bengkulu</option>
+											<option value="DKI Yogyakarta">DKI Yogyakarta</option>
+											<option value="DKI Jakarta">DKI Jakarta</option>
+											<option value="Gorontalo">Gorontalo</option>
+											<option value="Jambi">Jambi</option>
+											<option value="Jawa Barat">Jawa Barat</option>
+											<option value="Jawa Tengah">Jawa Tengah</option>
+											<option value="Jawa Timur">Jawa Timur</option>
+											<option value="Kalimantan Barat">Kalimantan Barat</option>
+											<option value="Kalimantan Selatan">Kalimantan Selatan</option>
+											<option value="Kalimantan Tengah">Kalimantan Tengah</option>
+											<option value="Kalimantan Timur">Kalimantan Timur</option>
+											<option value="Kalimantan Utara">Kalimantan Utara</option>
+											<option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+											<option value="Kepulauan Riau">Kepulauan Riau</option>
+											<option value="Lampung">Lampung</option>
+											<option value="Maluku">Maluku</option>
+											<option value="Maluku Utara">Maluku Utara</option>
+											<option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+											<option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+											<option value="Papua">Papua</option>
+											<option value="Papua Barat">Papua Barat</option>
+											<option value="Riau">Riau</option>
+											<option value="Sulawesi Barat">Sulawesi Barat</option>
+											<option value="Sulawesi Selatan">Sulawesi Selatan</option>
+											<option value="Sulawesi Tengah">Sulawesi Tengah</option>
+											<option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+											<option value="Sulawesi Utara">Sulawesi Utara</option>
+											<option value="Sumatera Barat">Sumatera Barat</option>
+											<option value="Sumatera Selatan">Sumatera Selatan</option>
+											<option value="Sumatera Utara">Sumatera Utara</option>
+
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">HP/Telepon</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value="" name="telepon">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label>
+                                    <div class="col-lg-9">
+                                        <select id="jenis_kelamin" class="form-control" size="0">
+                                            <option value="laki-laki">Laki-laki</option>
+                                            <option value="perempuan">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Kategori Lomba</label>
+                                    <div class="col-lg-9">
+                                        <select class="form-control" size="0" name="kategori">
+                                            <option value="geofisika">Geofisika</option>
+                                            <option value="kebumian">Kebumian</option>
+                                            <option value="mekanika">Mekanika</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="submit" class="btn btn-primary" value="Register">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /form user info -->
+{%endblock%}
