@@ -66,7 +66,7 @@ if sys.argv[1] == 'confirm':
 		db.session.add(user)
 		db.session.commit()
 		print(user.is_confirmed())
-		print(f'user with id={id} is confirmed')
+		print('user with id={id} is confirmed'.format(id))
 
 if sys.argv[1] == 'dummy':
 	import random
@@ -90,7 +90,7 @@ if sys.argv[1] == 'dummy':
 		user = User(nama=nama, email=email, password=password)
 		db.session.add(user)
 		db.session.commit()
-		print(f'user => {nama} {email} {password} generated!')
+		print('user => {nama} {email} {password} generated!'.format(nama,email,password))
 
 	print('done!')
 
