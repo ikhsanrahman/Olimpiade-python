@@ -4,6 +4,8 @@
 
 <div class="container">
 		{%if current_user.confirmed%}
+			<span class="anchor" id="formUserEdit"></span>
+            <hr class="my-3">
 			<div class="card mb-1">
   			<div class="card-header">
     			Informasi Peserta
@@ -11,6 +13,9 @@
 		  	<div class="card-body">
 		    	<h5 class="card-title">PRF Token</h5>
 		    	<p class="card-text">{{current_user.token}}</p>
+		    	<div class="alert alert-success" role="alert">
+  					<p class="card-text">Akun kamu sudah dikonfirmasi oleh panitia.</p>
+				</div>
 		  		</div>
 			</div>
 
@@ -25,16 +30,23 @@
 		  		</div>
 			</div>
 		{%else%}
-			<p>akun anda belum dikonfirmasi oleh panitia! </p>
-			<p>harap aktivasi akun anda segera! </p>
+			<span class="anchor" id="formUserEdit"></span>
+                    <hr class="my-3">
 			<div class="card">
-  			<div class="card-header">
-    			Informasi Pendaftar
-  			</div>
-		  	<div class="card-body">
-		    	<h5 class="card-title">Akun</h5>
-		    	<p class="card-text">Akun anda belum dikonfirmasi oleh panitia.</p>
-		  		</div>
+	  			<div class="card-header">
+	    			Informasi Pendaftar
+	  			</div>
+
+			  	<div class="card-body">
+			    	<h5 class="card-title">Akun</h5>
+			    	<div class="alert alert-danger" role="alert">
+						<p>Hi, {{current_user.nama}}!</p>
+						<p>Akun kamu belum dikonfirmasi oleh panitia :(</p>
+						<p>Mohon lakukan pembayaran secepatnya.</p>
+						<p>Untuk informasi lebih lanjut, lihat laman <a href="/kontak">kontak</a></p>
+						<p>Atau lihat petunjuk <a href="/pendaftaran">pendaftaran</a></p>
+					</div>
+			  	</div>
 			</div>
 		{%endif%}
 
