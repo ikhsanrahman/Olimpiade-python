@@ -2,8 +2,22 @@
 
 {%block body%}
 
-<div class="alert alert-success" role="alert">
-  <h3>Hai, {{nama}}. Registrasi kamu berhasil</h3>
+<div class="container">
+	<span class="anchor"></span>
+	<hr class="my-5">
+	<div class="card card-outline-secondary">
+	
+			<div class="card-body">
+				
+				<h5 class="card-title">Hi, {{nama}}!</h5>
+				
+				<div class="alert alert-success" role="alert">
+  				<p class="card-text">Yayyy, Registrasi Berhasil! Silahkan login menggunakan email dan password yang telah kamu daftarkan.</p>
+				</div>
+			<a href="/login" class="btn btn-primary">Login</a>
+			</div>
+	</div>
 </div>
-<
+ 
+
 {%endblock%}
