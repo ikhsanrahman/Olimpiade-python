@@ -4,7 +4,7 @@
 
   <div class="col-md-8 offset-md-2">
                     <span class="anchor" id="formUserEdit"></span>
-                    <hr class="my-5">
+                    <hr class="my-3">
 
                     <!-- form user info -->
                     <div class="card card-outline-secondary">
@@ -16,43 +16,49 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Nama Lengkap</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="" name="nama">
+                                        <input class="form-control" type="text" value="" name="nama" required="true" placeholder="Nama lengkap sesuai tanda pengenal">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">E-mail</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="email" placeholder="email valid yang bisa dihubungi" name="email">
+                                        <input class="form-control" type="email" placeholder="Email valid yang bisa dihubungi" name="email" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" name="password">
+                                        <input class="form-control" type="password" name="password" required="true">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Konfirmasi Password</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="password" name="password_confirm">
+                                        <input class="form-control" type="password" name="password_confirm" required="true" placeholder="ulangi password diatas">
+                                    </div>
+                                </div>
+                                  <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Nama Sekolah</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" value="" name="nama_sekolah" required="true" placeholder="Nama lengkap sekolah">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Alamat Sekolah</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="" name="alamat">
+                                        <input class="form-control" type="text" value="" name="alamat" required="true" placeholder="Alamat lengkap sekolah">
                                     </div>
                                 </div>
                                   <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Kab/Kota</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="" name="kabupaten_kota">
+                                        <input class="form-control" type="text" value="" name="kabupaten_kota" required="true" placeholder="Kab/Kota asal peserta">
                                     </div>
                                 </div>
                                   <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Provinsi</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Provinsi Peserta</label>
                                    <div class="col-lg-9">
-                                        <select class="form-control" size="0" name="provinsi">
+                                        <select class="form-control" size="0" name="provinsi" required="true">
                                            	<option value="Aceh">Aceh</option>
 											<option value="Bali">Bali</option>
 											<option value="Banten">Banten</option>
@@ -94,15 +100,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">HP/Telepon</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">HP/Telepon Peserta</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control" type="text" value="" name="telepon">
+                                        <input class="form-control" type="text" value="" name="telepon" required="true" placeholder="HP/Telepon yang bisa dihubungi">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label>
+                                    <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin Peserta</label>
                                     <div class="col-lg-9">
-                                        <select id="jenis_kelamin" class="form-control" size="0">
+                                        <select id="jenis_kelamin" class="form-control" size="0" required="true">
                                             <option value="laki-laki">Laki-laki</option>
                                             <option value="perempuan">Perempuan</option>
                                         </select>
@@ -111,20 +117,19 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Kategori Lomba</label>
                                     <div class="col-lg-9">
-                                        <select class="form-control" size="0" name="kategori">
-                                            <option value="geofisika">Geofisika</option>
-                                            <option value="kebumian">Kebumian</option>
-                                            <option value="mekanika">Mekanika</option>
+                                        <select class="form-control" size="0" name="kategori" required="true">
+                                            <option value="geofisika">SMA-Geofisika</option>
+                                            <option value="kebumian">SMA-Kebumian</option>
+                                            <option value="mekanika">SMA-Mekanika</option>
+                                            <option value="mekanika">SMP - IPA</option>
                                         </select>
                                     </div>
                                 </div>
                                 
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-9">
-                                        <input type="submit" class="btn btn-primary" value="Register">
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-success btn-lg float-right">Register</button>
+
+                                <p>Sudah punya akun? silahkan <a href="/login">masuk.</a></p>
+                               	<br>
                             </form>
                         </div>
                     </div>
