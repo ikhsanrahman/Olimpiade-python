@@ -17,7 +17,7 @@
                             <form class="form" role="form" autocomplete="off" id="loginForm" novalidate="" method="POST" action="/login">
                                 <div class="form-group">
                                     <label for="uname1">E-mail</label>
-                                    <input type="text" class="form-control" required="true" name="email">
+                                    <input type="text" class="form-control" required="true" name="email" placeholder="email yang sudah kamu daftarkan">
                                     <div class="invalid-feedback">Please enter your username or email</div>
                                 </div>
                                 <div class="form-group">
@@ -25,7 +25,17 @@
                                     <input type="password" class="form-control" required="true" autocomplete="new-password" name="password">
                                     <div class="invalid-feedback">Please enter a password</div>
                                 </div>
+
+                                 {%if message%}
+                                	<div class="alert alert-danger" role="alert">
+  									<p>email/password salah!</p>
+									</div>
+                                {%endif%}
                                 <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+
+                                <p>Belum punya akun? Silahkan <a href="/register">mendaftar.</a></p>
+                               	<br>
+                                
                             </form>
                         </div>
                         <!--/card-body-->
