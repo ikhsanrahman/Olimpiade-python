@@ -20,7 +20,7 @@ from datetime import datetime
 
 app = Flask("admin")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///testxjx.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///prf.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = "managaassQW"
 
@@ -40,13 +40,14 @@ class User(db.Model):
     id = db.Column("user_id", db.Integer, primary_key=True)
     nama = db.Column("username", db.Text, index=True)
     email = db.Column("email", db.Text, unique=True)
-    password = db.Column("password", db.Text, unique=True)
+    password = db.Column("password", db.String(200))
     registered_date = db.Column("registered_date", db.DateTime)
     authenticated = db.Column(db.Boolean, default=False)
-    role = db.Column(db.String, default="user")
+    role = db.Column(db.Text, default="user")
     confirmed = db.Column(db.Boolean, default=False)
-    token = db.Column(db.String, unique=True)
+    token = db.Column(db.Text, unique=True)
     telepon = db.Column('telepon', db.Text)
+    sekolah = db.Column('sekolah', db.Text)
     alamat = db.Column('alamat', db.Text)
     jenis_kelamin = db.Column('jenis_kelamin', db.Text)
     kategori = db.Column('kategori', db.Text)
@@ -54,7 +55,7 @@ class User(db.Model):
     provinsi = db.Column('provinsi', db.Text)
 
 
-    def __init__(self, nama, email, alamat, 
+    def __init__(self, nama, email, alamat, sekolah,
                  jenis_kelamin, kategori, kab_kota, provinsi,
                  password, role="user", confirmed=False, authenticated=False):
 
@@ -67,6 +68,7 @@ class User(db.Model):
         self.confirmed = False
         self.token = None
         self.alamat = alamat
+        self.sekolah = sekolah
         self.jenis_kelamin = jenis_kelamin
         self.kategori = kategori
         self.kab_kota = kab_kota
@@ -115,6 +117,9 @@ class User(db.Model):
     def confirm_user(self):
         self.confirmed = True
 
+    def undoconfirm_user(self):
+        self.confirmed = False
+
     def get_id(self):
         return str(self.id)
 
@@ -137,6 +142,21 @@ class Soal(db.Model):
     def __init__(self, kategori, teks_soal):
         self.kategori = kategori
         self.teks_soal = teks_soal
+
+    def __repr__(self):
+        return "<Soal %r>"% (self.nama)
+
+class Pengumuman(db.Model):
+    __tablename__ = "pengumuman"
+    id = db.Column("id_soal", db.Integer, primary_key=True)
+    konten = db.Column("teks_soal", db.Text)
+
+    def __init__(self, kategori, teks_soal):
+        self.kategori = kategori
+        self.teks_soal = teks_soal
+
+    def __repr__(self):
+        return "<Soal %r>"% (self.nama)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -162,6 +182,8 @@ def login():
 
             return redirect(url_for("main_app"))
 
+        return render_template("login.html", message="Email atau password anda salah!")
+
 
         return redirect(url_for("login"))
     return render_template("login.html", title="Login")
@@ -175,6 +197,7 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
         alamat = request.form["alamat"]
+        nama_sekolah = request.form["nama_sekolah"]
         jenis_kelamin = request.form.get("jenis_kelamin")
         kategori = request.form.get("kategori")
         kab_kota = request.form["kabupaten_kota"]
@@ -182,16 +205,19 @@ def register():
 
         if not User.query.filter_by(email=email).first():
             
-            user = User(nama=nama, email=email, alamat=alamat, 
+            user = User(nama=nama, email=email, alamat=alamat, sekolah=nama_sekolah, 
                         jenis_kelamin=jenis_kelamin, kategori=kategori, 
                         kab_kota=kab_kota, provinsi=provinsi, password=password)
 
             db.session.add(user)
             db.session.commit()
             return render_template("register_success.html", nama=nama, title="Registrasi Berhasil!")
+        
+        else:
+            return render_template("register.html", msg="email sudah terdaftar!")
 
 
-    return render_template("register.html", title="Registrasi Berhasil!")
+    return render_template("register.html", title="Registrasi")
 
 
 @app.route("/logout")
@@ -226,7 +252,6 @@ def manage_user():
         return render_template("admin.html", users=users)
 
 
-
 @app.route("/soal")
 @login_required
 def add_soal():
@@ -235,19 +260,13 @@ def add_soal():
     # else return forbidden message!
 
 
-@app.route("/confirm/<id>", methods=["POST"])
+@app.route("/pengumuman")
 @login_required
-def confirm_user(id):
+def pengumuman():
     if current_user.role == "admin":
-        if id:
-            user = User.query.filter_by(id=id).first()
-            if user is not None and user.is_confirmed() is not True:
-                user.confirm_user()
-                user.generate_token()
-                print(user.token)
-                db.session.add(user)
-                db.session.commit()
-                return redirect(url_for("manage_user"))
+        return render_template("pengumuman.html")
+    # else return forbidden message!
+
 
 @app.route('/confirmed')
 @login_required
@@ -256,6 +275,33 @@ def user_confirmed():
         user = User.query.filter_by(role='user').filter_by(confirmed=True)
         return render_template("admin.html", confirmed_users=user)
 
+
+@app.route("/confirm/<id>", methods=["POST"])
+@login_required
+def confirm_user(id):
+    if current_user.role == "admin":
+        if id:
+            user = User.query.filter_by(id=id).first()
+            if user and user.is_confirmed() is not True:
+                user.confirm_user()
+                user.generate_token()
+                print(user.token)
+                db.session.add(user)
+                db.session.commit()
+                return redirect(url_for("manage_user"))
+
+
+@app.route("/undoconfirm/<id>", methods=["POST"])
+@login_required
+def undoconfirm_user(id):
+    if current_user.role == "admin":
+        if id:
+            user = User.query.filter_by(id=id).first()
+            if user and user.is_confirmed():
+                user.undoconfirm_user()
+                db.session.add(user)
+                db.session.commit()
+                return redirect(url_for("user_confirmed"))
 
 
 ################################
