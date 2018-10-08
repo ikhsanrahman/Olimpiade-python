@@ -1,6 +1,10 @@
+#!/home/dasta/anaconda3/bin/python
+
+
 from server import db
 from server import User
 import sys
+import os
 
 if sys.argv[1] == 'migrate':
 	db.create_all()
@@ -32,7 +36,7 @@ if sys.argv[1] == 'addadmin':
 
 	if username and email and password:
 		user = User(nama=username, email=email, alamat="", 
-                    jenis_kelamin="1", kategori="", 
+                    sekolah="", jenis_kelamin="1", kategori="", 
                     kab_kota="", provinsi="", password=password, role='admin')
 
 		user.confirm_user()
@@ -102,8 +106,34 @@ if sys.argv[1] == 'stats':
 
 if sys.argv[1] == 'run':
 	from server import app
-	app.run()
+	app.run(port=9000)
 
 
 if sys.argv[1] == 'active':
 	users = User.query.filter_by(authenticated=True)
+
+
+
+
+if sys.argv[1] == 'adduser':
+	username = "adi"
+	email = "adi@gmail.com"
+	password = "adi"
+
+	if username and email and password:
+		user = User(nama=username, email=email, alamat="", sekolah="", 
+                    jenis_kelamin="1", kategori="", 
+                    kab_kota="", provinsi="", password=password, role='admin')
+
+		user.confirm_user()
+		user.generate_token()
+		db.session.add(user)
+		db.session.commit()
+		print('admin created!')
+
+
+if sys.argv[1] == 'deploy':
+	print("deploy system...	")
+	os.system("gunicorn server:app -b 'localhost:8000' -w 2 ")
+
+
