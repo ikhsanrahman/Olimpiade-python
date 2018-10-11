@@ -1,6 +1,7 @@
 *.db
 *.*.swp
 __pycache__/*
+static/*.csv
 env/*
 dov/*
 
