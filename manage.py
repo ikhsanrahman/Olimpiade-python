@@ -6,6 +6,23 @@ from server import User
 import sys
 import os
 
+import random
+import string
+words = [i for i in string.ascii_letters]
+
+def generate_name():
+	return "".join([random.choice(words) for i in range(10)])
+
+def generate_email():
+	return "".join([random.choice(words) for i in range(10)])+"@gmail.com"
+
+def generate_password():
+	return "".join([random.choice(words) for i in range(10)])
+
+def generate_password():
+	return "".join([random.choice(words) for i in range(10)])
+
+
 if sys.argv[1] == 'migrate':
 	db.create_all()
 	print('migrate success!')
@@ -30,9 +47,9 @@ if sys.argv[1] == 'userconfirmed':
 		print(user.id, user.nama, user.email, user.registered_date, user.token)
 
 if sys.argv[1] == 'addadmin':
-	username = input('username> ')
-	email = input('email> ')
-	password = input('password> ')
+	username = "admin"
+	email = "admin"
+	password = "admin"
 
 	if username and email and password:
 		user = User(nama=username, email=email, alamat="", 
@@ -73,18 +90,7 @@ if sys.argv[1] == 'confirm':
 		print('user with id={id} is confirmed'.format(id))
 
 if sys.argv[1] == 'dummy':
-	import random
-	import string
-	words = [i for i in string.ascii_letters]
-
-	def generate_name():
-		return "".join([random.choice(words) for i in range(10)])
-
-	def generate_email():
-		return "".join([random.choice(words) for i in range(10)])+"@gmail.com"
-
-	def generate_password():
-		return "".join([random.choice(words) for i in range(10)])
+	
 
 	for i in range(1000):
 		nama=generate_name()
@@ -106,7 +112,7 @@ if sys.argv[1] == 'stats':
 
 if sys.argv[1] == 'run':
 	from server import app
-	app.run(port=9000)
+	app.run(port=9000, debug=True)
 
 
 if sys.argv[1] == 'active':
@@ -134,6 +140,6 @@ if sys.argv[1] == 'adduser':
 
 if sys.argv[1] == 'deploy':
 	print("deploy system...	")
-	os.system("gunicorn server:app -b 'localhost:8000' -w 2 ")
+	os.system("gunicorn server:app -b 'localhost:8000' -w 5 ")
 
 
