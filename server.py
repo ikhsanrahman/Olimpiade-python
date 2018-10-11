@@ -198,14 +198,6 @@ class Lomba(db.Model):
         self.start = True
 
 
-class Skor(db.Model):
-    __tablename__ = "skor"
-    id = db.Column(db.Integer, primary_key=True)
-    skor = db.Column(db.Integer, default=0)
-    id_user = db.Column(db.Integer, db.ForeignKey("user.id"))
-
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
