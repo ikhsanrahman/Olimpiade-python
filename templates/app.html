@@ -18,6 +18,7 @@
 				</div>
 		  		</div>
 			</div>
+			<br>
 
 			<div class="card">
   			<div class="card-header">
@@ -29,6 +30,21 @@
 		    	<a href="#" class="btn btn-primary">Mulai Lomba</a>
 		  		</div>
 			</div>
+			<br>
+
+			{%for item in pengumuman%}
+				<div class="card">
+  				<div class="card-header">
+    			{{item.kategori}}
+  				</div>
+		  		<div class="card-body">
+		    	<h5 class="card-title">{{item.judul}}</h5>
+		    	<p class="card-text">{{item.konten}}</p>
+		  		</div>
+				</div>
+				<br>
+
+			{%endfor%}
 		{%else%}
 			<span class="anchor" id="formUserEdit"></span>
                     <hr class="my-3">

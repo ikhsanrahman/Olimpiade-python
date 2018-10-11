@@ -1,0 +1,53 @@
+{%extends "baseadmin.html"%}
+
+{%block body%}
+
+	{%if pengumuman%}
+
+		<table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Kategori</th>
+            <th>Edit</th>
+            <th>Hapus</th>
+            <th>Tgl</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for item in pengumuman%}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.kategori}}</td>
+              <td>
+                  <form method="get" action="/editpengumuman/{{item.id}}" >
+                    <input class="btn btn-outline-success btn-sm" type="submit" value="Edit">
+                  </form>
+               </td>
+               <td>
+               	<form method="post" action="/deletepengumuman/{{item.id}}" >
+                    <input class="btn btn-outline-danger btn-sm" type="submit" value="Hapus">
+                  </form>
+               </td>
+               <td>{{item.posted_date}}</td>
+          </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+
+      <div class="container">
+			<a class="btn btn-outline-success" href="/tambahpengumuman">Buat Pengumuman</a>
+	  </div>
+
+
+    </div>
+
+	{%else%}
+
+		<div class="container">
+			<a class="btn btn-outline-success" href="/tambahpengumuman">Buat Pengumuman</a>
+		</div>
+
+	{%endif%}
+
+{%endblock%}

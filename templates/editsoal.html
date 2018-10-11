@@ -1,0 +1,60 @@
+{%extends "base.html"%}
+
+{%block body%}
+
+
+        <div class="col-md-8 offset-md-2">
+                    <span class="anchor" id="formUserEdit"></span>
+                    <hr class="my-3">
+
+                    <!-- form user info -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Edit Soal</h3>
+                        </div>
+                        <div class="card-body">
+                    <form class="form" role="form" autocomplete="off" id="loginForm" novalidate="" method="POST" action="/editsoal/{{soal.id}}">
+
+                    <div class="form-group">
+                        <label  for="kategori">Kategori Lomba</label>
+                            <select class="form-control" size="0" name="kategori" required="true">
+                                <option value="SMA-Astronomi">SMA-Astronomi</option>
+                                <option value="SMA-Kebumian">SMA-Kebumian</option>
+                                <option value="SMA-Mekanika">SMA-Mekanika</option>
+                                <option value="SMP-IPA">SMP-IPA</option>
+                            </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="uname1">Teks Soal</label>
+                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="teks_soal">{{soal.teks_soal}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pilihan A</label>
+                        <input type="text" class="form-control" required="true"  value="{{soal.opsi_a}}" name="pilihan_a">
+                    </div>
+
+                     <div class="form-group">
+                        <label>Pilihan B</label>
+                        <input type="text" class="form-control" required="true"  value="{{soal.opsi_b}}" name="pilihan_b">
+                    </div>
+
+                     <div class="form-group">
+                        <label>Pilihan C</label>
+                        <input type="text" class="form-control" required="true" value="{{soal.opsi_c}}" name="pilihan_c">
+                    </div>
+
+                     <div class="form-group">
+                        <label>Pilihan D</label>
+                        <input type="text" class="form-control" required="true" value="{{soal.opsi_d}}" name="pilihan_d">
+                    </div>
+
+                     <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Submit</button>
+
+
+                </form>
+            </div>
+        </div>
+{%endblock%}
