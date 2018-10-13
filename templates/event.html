@@ -1,0 +1,52 @@
+{%extends "baseadmin.html"%}
+
+{%block body%}
+
+<div class="container">
+	<span class="anchor" id="formUserEdit"></span>
+    <hr class="my-3">
+	<div class="card mb-1">
+		<div class="card-header">
+		Atur Waktu Lomba
+		</div>
+
+  	<div class="card-body">
+    	<form action="/event" method="post">
+    		<div class="form-group">
+                        <label  for="kategori">Durasi Lomba</label>
+                        <select class="form-control" size="0" name="pilihan_benar" required="true">
+                           <option value="1">1 Jam</option>
+							<option value="2">2 Jam</option>
+							<option value="3">3 Jam</option>
+							<option value="4">4 Jam</option>
+							<option value="5">5 Jam</option>
+							<option value="6">6 Jam</option>
+							<option value="7">7 Jam</option>
+							<option value="8">8 Jam</option>
+							<option value="9">9 Jam</option>
+							<option value="10">10 Jam</option>
+							<option value="11">11 Jam</option>
+							<option value="12">12 Jam</option>
+							<option value="13">13 Jam</option>
+							<option value="14">14 Jam</option>
+							<option value="15">15 Jam</option>
+							<option value="16">16 Jam</option>
+							<option value="17">17 Jam</option>
+							<option value="18">18 Jam</option>
+							<option value="19">19 Jam</option>
+							<option value="20">20 Jam</option>
+							<option value="21">21 Jam</option>
+							<option value="22">22 Jam</option>
+							<option value="23">23 Jam</option>
+							<option value="24">24 Jam</option>
+
+                            </select>
+                    </div>
+    		<input type="submit" name="" value="Mulai" class="btn btn-primary">
+    	</form>	
+  	</div>
+	</div>
+
+	</div>
+
+{%endblock%}

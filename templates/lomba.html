@@ -1,0 +1,56 @@
+{%extends "base.html"%}
+
+{%block body%}
+
+	<div class="container">
+	
+		{%if lomba%}
+		{%for item in lomba%}
+			<span class="anchor" id="formUserEdit"></span>
+    		<hr class="my-3">
+			<div class="card mb-1">
+				<div class="card-header">
+			</div>
+
+
+  			<div class="card-body">
+
+  				<div class="card-title">
+  					<h4>{{item.teks_soal}}</h4>
+  				</div>
+
+  				<input class="form-check-input" id="opsi_a" type="radio" name="opsi_a" value="{{item.opsi_a}}" checked>
+  				<label class="form-check-label" for="opsi_a">
+    			{{item.opsi_a}}
+  				</label>
+
+  				<input class="form-check-input" id="opsi_b" type="radio" name="opsi_b" value="{{item.opsi_b}}" checked>
+  				<label class="form-check-label" for="exampleRadios1">
+    			{{item.opsi_b}}
+  				</label>
+
+  				<input class="form-check-input" id="opsi_c" type="radio" name="opsi_c" value="{{item.opsi_c}}" checked>
+  				<label class="form-check-label" for="opsi_c">
+    			{{item.opsi_c}}
+  				</label>
+
+  				<input class="form-check-input" id="opsi_d" type="radio" name="opsi_d" value="{{item.opsi_d}}" checked>
+  				<label class="form-check-label" for="opsi_d">
+    			{{item.opsi_d}}
+  				</label>
+    
+  			</div>
+			</div>
+
+		{%endfor%}
+
+		{%else%}
+			
+			<div class="container my-8">
+				<h3 class="text-center">Lomba belum dimulai :(</h3>
+			</div>
+		{%endif%}
+
+	</div>
+
+{%endblock%}

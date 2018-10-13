@@ -119,8 +119,6 @@ if sys.argv[1] == 'active':
 	users = User.query.filter_by(authenticated=True)
 
 
-
-
 if sys.argv[1] == 'adduser':
 	username = "adi"
 	email = "adi@gmail.com"
@@ -140,6 +138,14 @@ if sys.argv[1] == 'adduser':
 
 if sys.argv[1] == 'deploy':
 	print("deploy system...	")
-	os.system("gunicorn server:app -b 'localhost:8000' -w 5 ")
+	os.system("gunicorn server:app -b 'localhost:8000' -w {} ".format(os.cpu_count()))
 
 
+if sys.argv[1] == 'mulailomba':
+	print('memulai lomba')
+	from server import Event
+	event = Event.query.filter_by(id=1).first()
+	print(event.is_started)
+	event.mulai()
+	print(event.is_started)
+	db.session.commit()

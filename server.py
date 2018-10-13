@@ -23,7 +23,7 @@ from datetime import datetime
 
 app = Flask("admin")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///prf1.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///prf2.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = "managaassQW"
 
@@ -146,15 +146,17 @@ class Soal(db.Model):
     opsi_b = db.Column(db.Text)
     opsi_c = db.Column(db.Text)
     opsi_d = db.Column(db.Text)
+    opsi_benar = db.Column(db.Text)
     posted_date = db.Column(db.DateTime)
 
-    def __init__(self, kategori, teks_soal, opsi_a, opsi_b, opsi_c, opsi_d):
+    def __init__(self, kategori, teks_soal, opsi_a, opsi_b, opsi_c, opsi_d, opsi_benar):
         self.kategori = kategori
         self.teks_soal = teks_soal
         self.opsi_a = opsi_a
         self.opsi_b = opsi_b
         self.opsi_c = opsi_c
         self.opsi_d = opsi_d
+        self.opsi_benar = opsi_benar
         self.posted_date = datetime.utcnow()
 
     def __repr__(self):
@@ -180,22 +182,45 @@ class Pengumuman(db.Model):
         return "<Pengumuman %r>"% (self.id)
 
 
-class Lomba(db.Model):
-    __tablename__ = "lomba"
+class Skor(db.Model):
+    __tablename__ = "skor"
     id = db.Column(db.Integer, primary_key=True)
-    mulai = db.Column(db.Boolean, default=False)
-    start = db.Column(db.DateTime)
-    durasi = db.Column(db.Integer)
+    user_id = db.Column(db.Integer)
+    skor = db.Column(db.Integer, default=0)
+
+    def __init__(self):
+        pass
+
+    def tambah_skor_benar(self):
+        self.skor += 4
+
+    def kurang_skor_salah(self):
+        self.skor -= 1
 
 
-    def __init__(self, start, durasi):
-        self.mulai = False
-        self.start = start
-        self.durasi = durasi
+class SkoringRule(db.Model):
+    __tablename__ = "skoring_rule"
+    id = db.Column(db.Integer, primary_key=True)
+    skor_benar = db.Column(db.Integer)
+    skor_salah = db.Column(db.Integer)
+    skor_kosong = db.Column(db.Integer)
 
 
-    def mulai_lomba(self):
-        self.start = True
+class Event(db.Model):
+    __tablename__ = "event"
+    id = db.Column(db.Integer, primary_key=True)
+    start = db.Column(db.Float)
+    duration = db.Column(db.Integer)
+    is_started = db.Column(db.Boolean, default=False)
+    stop = db.Column(db.Float)
+
+    def __init__(self, duration):
+        self.start = time.time()
+        self.duration = duration
+        self.stop = start + 3600 * duration
+
+    def mulai(self):
+        self.is_started = True
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -221,7 +246,7 @@ def login():
 
             return redirect(url_for("main_app"))
 
-        return render_template("login.html", message="Email atau password anda salah!")
+        return render_template("login.html", message="Email atau password anda salah!", title="Login")
 
 
         return redirect(url_for("login"))
@@ -253,8 +278,7 @@ def register():
             return render_template("register_success.html", nama=nama, title="Registrasi Berhasil!")
         
         else:
-            return render_template("register.html", msg="email sudah terdaftar!")
-
+            return render_template("register.html", msg="email sudah terdaftar")
 
     return render_template("register.html", title="Registrasi")
 
@@ -306,13 +330,14 @@ def tambah_soal():
     if current_user.role == "admin":
         if request.method == "POST":
             kategori = request.form.get("kategori")
+            opsi_benar = request.form.get("pilihan_benar")
             teks_soal = request.form["teks_soal"]
             opsi_a = request.form["pilihan_a"]
             opsi_b = request.form["pilihan_b"]
             opsi_c = request.form["pilihan_c"]
             opsi_d = request.form["pilihan_d"]
 
-            soal = Soal(kategori=kategori, teks_soal=teks_soal, opsi_a=opsi_a, opsi_b=opsi_b, opsi_c=opsi_c, opsi_d=opsi_d)
+            soal = Soal(kategori=kategori, teks_soal=teks_soal, opsi_a=opsi_a, opsi_b=opsi_b, opsi_c=opsi_c, opsi_d=opsi_d, opsi_benar=opsi_benar)
             db.session.add(soal)
             db.session.commit()
             
@@ -321,6 +346,7 @@ def tambah_soal():
         return render_template("tambah_soal.html")
 
     return redirect(url_for("index_page"))
+
 
 @app.route("/editsoal/<id>", methods=["GET", "POST"])
 def edit_soal(id):
@@ -368,8 +394,6 @@ def delete_soal(id):
                     db.session.commit()
                     return redirect(url_for("add_soal"))
                 return redirect(url_for("add_soal"))
-
-
 
 
 @app.route("/pengumuman")
@@ -453,6 +477,7 @@ def user_confirmed():
 
     return redirect(url_for("index_page"))
 
+
 @app.route("/confirm/<id>", methods=["POST"])
 @login_required
 def confirm_user(id):
@@ -523,6 +548,45 @@ def download():
     if current_user.role == "admin":
         return render_template("download.html")
 
+
+
+@app.route("/event", methods=["GET", "POST"])
+@login_required
+def event_manager():
+    if current_user.role == "admin":
+        if request.method == "POST":
+            duration = request.form.get('durasi')
+            event = Event(duration=duration)
+            db.session.add(event)
+            db.session.commit()
+            return redirect(url_for("administrator"))
+        return render_template("event.html")
+
+
+@app.route("/startevent/<id>", methods=["POST"])
+@login_required
+def start_event():
+    if current_user.role == "admin":
+        if request.method == "POST":
+            event = Event.query.filter_by(id=id).first()
+            if event:
+                event.is_started = True
+                db.session.commit()
+                return redirect(url_for("event_manager"))
+
+
+@app.route("/hapusevent/<id>", methods=["POST"])
+@login_required
+def hapus_event(id):
+    if current_user.role == "admin":
+        if request.method == "POST":
+            even = Event.query.filter_by(id=id).first()
+            if event:
+                db.session.delete(event)
+                db.session.commit()
+                return redirect(url_for("event_manager"))
+
+
 ################################
 # USER AREA
 ################################
@@ -531,6 +595,17 @@ def download():
 def index_page():
    return render_template("index.html", title="Selamat datang di PRF Nasional")
 
+
+@app.route("/lomba", methods=["GET", "POST"])
+@login_required
+def mulai_lomba():
+    if current_user.role == "user":
+        lomba = Event.query.filter_by(id=1).first()
+        if lomba.is_started:
+            soal = Soal.query.all()
+            return render_template("lomba.html", soal=soal) 
+        
+        return render_template("lomba.html", msg="Lomba belum dimulai :(")
 
 
 @app.route("/info")
