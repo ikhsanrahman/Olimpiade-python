@@ -47,14 +47,14 @@ if sys.argv[1] == 'userconfirmed':
 		print(user.id, user.nama, user.email, user.registered_date, user.token)
 
 if sys.argv[1] == 'addadmin':
-	username = "admin"
+	username = "adminn"
 	email = "admin"
 	password = "admin"
 
 	if username and email and password:
-		user = User(nama=username, email=email, alamat="", 
+		user = User(nama=username, email=email, alamat="WEW", 
                     sekolah="", jenis_kelamin="1", kategori="", 
-                    kab_kota="", provinsi="", password=password, role='admin')
+                    kab_kota="", provinsi=	"", password=password, role='admin')
 
 		user.confirm_user()
 		user.generate_token()
@@ -65,7 +65,7 @@ if sys.argv[1] == 'addadmin':
 if sys.argv[1] == 'listadmin':
 	admins = User.query.filter_by(role='admin')
 	for admin in admins:
-		print(admin.nama, admin.email, admin.password)
+		print(admin.nama, admin.email, admin.password, admin.role)
 
 if sys.argv[1] == 'testuser':
 	username = input('username> ')

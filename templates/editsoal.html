@@ -31,6 +31,17 @@
                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="teks_soal">{{soal.teks_soal}}</textarea>
                     </div>
 
+
+
+                    <div class="form-group">
+                        <label for="uname1">Gambar</label>
+                        <input type="file" name="file" class="form-control-file">
+
+                        {%if soal.gambar != '0'%}
+                            <img src="/static/img/{{soal.gambar}}">
+                        {%endif%}
+                    </div>
+
                     <div class="form-group">
                         <label>Pilihan A</label>
                         <input type="text" class="form-control" required="true"  value="{{soal.opsi_a}}" name="pilihan_a">

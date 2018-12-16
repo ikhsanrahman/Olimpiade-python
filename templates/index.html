@@ -1,132 +1,372 @@
-{%extends "base.html"%}
+<!DOCTYPE html>
+<html lang="en">
 
-{%block body%}
-	  <main>
-    <div class="container">
+  <head>
 
-      <!--Section: Main info-->
-      <section class="mt-5">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <!--Grid row-->
+    <title>Pekan Raya Fisika 2018</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/landing-page.min.css" rel="stylesheet">
+    <link href="/static/css/timeline.css" rel="stylesheet">
+
+  </head>
+
+  <style>
+body {
+    min-height: 100vh;
+}
+.flex-fill {
+   flex: 1 1 auto;
+}  
+.bg { 
+    background-image: url("/static/img/backgroundprf.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+
+    /* the rest of your styling */
+}
+
+
+</style>
+
+  <body>
+
+    <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Tentang</a>
+      </li>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+      <a href="/login" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+    </form>
+      
+  </div>
+</nav>
+
+    <!-- Masthead -->
+    <header class="text-center my-5 features-icons bg flex-fill d-flex masterhead">
+      <div class="container">
+        
+
+        <div class="row">
+          <div class="col-lg-12 mx-auto">
+            <h1 class="mb-5 text-white">Pekan Raya Fisika adalah Kompetisi Fisika Tahunan Yang Diadakan Oleh Himpunan Mahasiswa Fisika Universitas Riau</h1>
+          </div>
+
+          <div class="col-sm-4 mx-auto">
+                  <button type="submit" class="btn btn-block btn-lg btn-primary">Daftar!</button>
+          </div>
+          
+        </div>
+      </div>
+    </header>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+      <div class="container">
+        <h3 class="text-center">Kategori</h3>
+        <hr>
         <div class="row">
 
-          <!--Grid column-->
-          <div class="col-lg-12">
-
-          	<div class="text-center">
-          		<img src="/static/img/logo.jpg" height="140px" width="140px" class="img-fluid" alt="PRF Logo">
-          	</div>
-
-          	<h2 class="h2 text-center font-weight-bold">Pekan Raya Fisika Universitas Riau 2018</h2>
-          	 <hr class="my-5">
-          	<h5 class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper ex ut ultricies mattis. Integer eu urna ac tellus eleifend commodo eu ut lectus. Praesent eleifend ex id magna consequat, a venenatis eros facilisis. Sed eleifend condimentum tellus, eget lacinia neque commodo eget. Pellentesque hendrerit scelerisque enim et posuere. Etiam vitae eros arcu. Fusce non euismod lacus. In at vehicula ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras feugiat diam arcu. Nunc non vehicula libero. Quisque lacus tortor, placerat eget justo at, rhoncus feugiat ipsum. Pellentesque sit amet porttitor tortor. Nullam congue rutrum cursus. Suspendisse tincidunt erat lorem, eget ultricies justo congue vitae.</h6>
-
-          	<br>
-          	<br>
-          	
-          	<div class="form-row text-center">
-
-
-    			<div class="col-12">
-        			<a href="/register" class="btn btn-outline-primary btn-lg">Daftar Sekarang!</a>
-    			</div>
- 			</div>
-          	
+          <div class="col-lg-3">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              
+              <div class="features-icons-icon d-flex">
+                <i class="icon-home m-auto text-primary"></i>
+              </div>
+              <h3>SMA Astronomi</h3>
+              <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
+            </div>
           </div>
-       
 
-
-      </section>
-      <!--Section: Main info-->
-
-      <hr class="my-5">
-
-      <!--Section: Main features & Quick Start-->
-      <section class="bg-prim">
-
-        <h3 class="h3 text-center mb-5">Kategori Olimpiade</h3>
-
-        <!--Grid row-->
-        <div class="row">
-
-              <div class="col-12">
-                <h3 class="text-center">SMA Astronomi</h3>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper ex ut ultricies mattis.</p>
+          <div class="col-lg-3">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-home m-auto text-primary"></i>
               </div>
-
-            <!--/First row-->
-
-            <div class="col-12">
-                <h3 class="text-center">SMA Mekanika</h3>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper ex ut ultricies mattis.</p>
-              </div>
-            <!--/Second row-->
-
-           <div class="col-12">
-                <h3 class="text-center">SMA Kebumia</h3>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper ex ut ultricies mattis.</p>
-              </div>
-
-           <div class="col-12">
-                <h3 class="text-center">SMP IPA</h3>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper ex ut ultricies mattis.</p>
-              </div>
-
+              <h3>SMA Mekanika</h3>
+              <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            </div>
           </div>
-          <!--/Grid column-->
+          
+          <div class="col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-globe m-auto text-primary"></i>
+              </div>
+              <h3>SMA Geologi</h3>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
 
-     
-          <!--/Grid column-->
+          <div class="col-lg-3">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-eye m-auto text-primary"></i>
+              </div>
+              <h3>SMP IPA</h3>
+              <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            </div>
+          </div>
 
         </div>
-        <!--/Grid row-->
+      </div>
+    </section>
 
-      </section>
-      <!--Section: Main features & Quick Start-->
+    
 
-      <hr class="my-5">
 
-      <!--Section: More-->
-      <section>
+    <!-- Call to Action -->
+    <section class="features-icons bg-light text-center">
+     <<div class="container py-2">
+  <h2 class="text-center py-3">Timeline</h2>
+  <hr class="my-3">
 
-        <h2 class="my-5 h3 text-center">Didukung Oleh:</h2>
 
-        <!--First row-->
-        <div class="row">
+<div class="container">
 
-        	<div class="col-12">
-        		<div class="text-center">
-        			<img class="text-center" height="150px" width="150px" src="/static/img/logo-unri.png" >
-        		</div>
-        	</div>
-
-        	<div class="my-3 col-12">
-        		<div class="text-center">
-        			<img class="text-center" height="150px" width="150px" src="/static/img/logo-unri.png" >
-        		</div>
-        	</div>
-
-        	<div class="my-3 col-12">
-        		<div class="text-center">
-        			<img class="text-center" height="150px" width="150px" src="/static/img/logo-unri.png" >
-        		</div>
-        	</div>
-
-        	<div class="my-3 col-12">
-        		<div class="text-center">
-        			<img class="text-center" height="150px" width="150px" src="/static/img/logo-unri.png" >
-        		</div>
-        	</div>
-
-        </div>
-
-      </section>
-      <!--Section: More-->
-
+  <!-- timeline item 1 -->
+  <div class="row no-gutters">
+    <div class="col-sm"> <!--spacer--> </div>
+    <!-- timeline item 1 center dot -->
+    <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+      <div class="row h-50">
+        <div class="col">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+      <h5 class="m-2">
+        <span class="badge badge-pill bg-light border">&nbsp;</span>
+      </h5>
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
     </div>
-  </main>
-  <!--Main layout-->
-</body>
+    <!-- timeline item 1 event content -->
+    <div class="col-sm py-2">
+      <div class="card border-success shadow">
+        <div class="card-body">
+          
+          <h4 class="card-title text-muted">Day 1 Orientation</h4>
+          <p class="card-text">Welcome to the campus, introduction and get started with the tour.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/row-->
+  <!-- timeline item 2 -->
+  <div class="row no-gutters">
+    <div class="col-sm py-2">
+      <div class="card border-success shadow">
+        <div class="card-body">
+          <h4 class="card-title text-success">Day 2 Sessions</h4>
+          <p class="card-text">Sign-up for the lessons and speakers that coincide with your course syllabus. Meet and greet with instructors.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+      <h5 class="m-2">
+        <span class="badge badge-pill bg-success">&nbsp;</span>
+      </h5>
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+    </div>
+    <div class="col-sm"> <!--spacer--> </div>
+  </div>
+  <!--/row-->
+  <!-- timeline item 3 -->
+  <div class="row no-gutters">
+    <div class="col-sm"> <!--spacer--> </div>
+    <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+      <h5 class="m-2">
+        <span class="badge badge-pill badge-pill bg-succes">&nbsp;</span>
+      </h5>
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+    </div>
+    <div class="col-sm py-2">
+      <div class="card border-success shadow">
+        <div class="card-body">
+          <div class="float-right text-muted small">Jan 11th 2019 8:30 AM</div>
+          <h4 class="card-title">Day 3 Sessions</h4>
+          <p>Shoreditch vegan artisan Helvetica. Tattooed Codeply Echo Park Godard kogi, next level irony ennui twee squid fap selvage. Meggings flannel Brooklyn literally small batch, mumblecore PBR try-hard kale chips. Brooklyn vinyl lumbersexual
+            bicycle rights, viral fap cronut leggings squid chillwave pickled gentrify mustache.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/row-->
+  <!-- timeline item 4 -->
+  <div class="row no-gutters">
+    <div class="col-sm py-2">
+      <div class="card border-success shadow">
+        <div class="card-body">
+          <div class="float-right text-muted small">Jan 12th 2019 11:30 AM</div>
+          <h4 class="card-title">Day 4 Wrap-up</h4>
+          <p>Join us for lunch in Bootsy's cafe across from the Campus Center.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+      <div class="row h-50">
+        <div class="col border-right">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+      <h5 class="m-2">
+        <span class="badge badge-pill bg-light border">&nbsp;</span>
+      </h5>
+      <div class="row h-50">
+        <div class="col">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+      </div>
+    </div>
+    <div class="col-sm"> <!--spacer--> </div>
+  </div>
+  <!--/row-->
+</div>
+
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials text-center bg-light">
+      <div class="container">
+        <h2 class="mb-5">Kontak:</h2>
+        <hr>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <i class="fa fa-facebook fa-5x fa-fw mb-3"></i>
+              <h5>Pekan Raya Fisika UNRI</h5>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <i class="fa fa-instagram fa-5x fa-fw mb-3"></i>
+              <h5>@pekanrayafisika_unri</h5>
+            </div>
+          </div>   
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <i class="fa fa-whatsapp fa-5x fa-fw mb-3"></i>
+              <h5>+62823 8447 3181 (Khaikal)</h5>
+            </div>
+          </div>   
+        </div>
+
+        <div class="row my-5">
+          
+          <div class="col-lg-6">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <i class="fa fa-envelope fa-5x fa-fw mb-3"></i>
+              <h5><a href="mailto:pekanrayafisikaur16@gmail.com">pekanrayafisikaur16@gmail.com</a></h5>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <i class="fa fa-phone fa-5x fa-fw mb-3"></i>
+              <h5>+62823 8183 2755 (Ramy)</h5>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </section>
+
+
+    
+   
+    <!-- Testimonials -->
+    <section class="testimonials text-center bg-light">
+      <div class="container">
+        <h2 class="mb-5">Didukung Oleh:</h2>
+        <hr>
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid mb-3" src="/static/img/1539081605536_IMG-20181009-WA0189.jpg" alt="">
+              <h5>UNIVERSITAS RIAU</h5>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid mb-3" src="/static/img/1539070028413_IMG-20181009-WA0187.jpg" alt="">
+              <h5>IHIMAFI</h5>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid mb-3" src="/static/img/1539070021041_IMG-20181009-WA0186.jpg" alt="">
+             <h5>HIMAFI UNRI</h5>
+            </div>
+          </div>
+           <div class="col-lg-3">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+              <img class="img-fluid mb-3" src="/static/img/1539070030533_IMG-20181009-WA0188.jpg" alt="">
+              <h5>HIMAFI UNRI - Compton Generation</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+     <footer class="page-footer text-center font-small">
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      Pekan Raya Fisika Universitas Riau © 2018
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
 
 </html>
-{%endblock%}

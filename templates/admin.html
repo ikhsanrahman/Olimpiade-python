@@ -1,7 +1,7 @@
 {%extends "baseadmin.html"%}
 
 {%block body%}
-  
+
   {%if users%}
       <table class="table table-striped">
         <thead>
@@ -23,7 +23,7 @@
                 <td>Confirmed</td>
               {%else%}
               <td>
-                  <form method="post" action="/confirm/{{user.id}}" >
+                  <form method="post" action="/confirm/{{user.user_id}}" >
                     <input class="btn btn-outline-success btn-sm" type="submit" value="confirm">
                   </form>
                 </td>
@@ -48,18 +48,18 @@
         </thead>
         <tbody>
           {%for user in confirmed_users%}
-            
+
             {%if user.role == "user"%}
             <tr>
               <td>{{user.id}}</td>
               <td>{{user.nama}}</td>
               <td>{{user.email}}</td>
               <td>
-              
-                  <form method="post" action="/undoconfirm/{{user.id}}" >
+
+                  <form method="post" action="/undoconfirm/{{user.user_id}}" >
                     <input class="btn btn-outline-danger btn-sm" type="submit" value="batal">
                   </form>
-                
+
               </td>
               <td>{{user.registered_date}}</td>
             </tr>
@@ -74,11 +74,11 @@
     <div class="container">
         <hr class="my-3">
         <div class="card card-outline-secondary">
-        
+
             <div class="card-body">
-              
+
               <h5 class="card-title">Jumlah Pendaftar</h5>
-              
+
               <div class="alert alert-success" role="alert">
                 <h3 class="card-text">{{pendaftar}} orang</p>
               </div>
@@ -89,11 +89,11 @@
         <hr class="my-3">
 
         <div class="card card-outline-secondary">
-        
+
             <div class="card-body">
-              
+
               <h5 class="card-title">Jumlah Peserta</h5>
-              
+
               <div class="alert alert-success" role="alert">
                 <h3 class="card-text">{{peserta}} orang</p>
               </div>
@@ -103,7 +103,7 @@
       </div>
 
 
- 
+
     {%endif%}
 
 
